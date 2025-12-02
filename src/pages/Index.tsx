@@ -5,57 +5,17 @@ import { CategoryGrid } from "@/components/CategoryGrid";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, TrendingUp, Shield, Award } from "lucide-react";
 import { Link } from "react-router-dom";
+import { productsData } from "@/data/products";
 
-const featuredProducts = [
-  {
-    id: "1",
-    name: "Smart TV 60 Philco P60CGA LED Google TV Dolby Atmos",
-    brand: "Philco",
-    image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=800",
-    slug: "smart-tv-60-philco-p60cga-google-tv-dolby-atmos",
-    specs: ["60 polegadas", "Google TV", "Dolby Atmos", "4K UHD"],
-  },
-  {
-    id: "2",
-    name: "Smart TV 55 Aiwa Google TV 4K Dolby Vision & Atmos",
-    brand: "Aiwa",
-    image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=800",
-    slug: "smart-tv-55-aiwa-google-tv-4k-dolby-vision-atmos",
-    specs: ["55 polegadas", "Google TV", "Dolby Vision", "4K UHD"],
-  },
-  {
-    id: "3",
-    name: "Smart TV 50 AOC 4K DLED Roku TV Quad Core",
-    brand: "AOC",
-    image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=800",
-    slug: "smart-tv-50-aoc-4k-dled-roku-tv-quad-core",
-    specs: ["50 polegadas", "Roku TV", "4K UHD", "Quad Core"],
-  },
-  {
-    id: "4",
-    name: "Smart TV QLED 55 4K Toshiba Google TV",
-    brand: "Toshiba",
-    image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=800",
-    slug: "smart-tv-qled-55-4k-toshiba-google-tv",
-    specs: ["55 polegadas", "QLED", "Google TV", "4K UHD"],
-  },
-  {
-    id: "5",
-    name: "Hisense Smart TV UHD 4K 65 Polegadas Dolby Vision",
-    brand: "Hisense",
-    image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=800",
-    slug: "hisense-smart-tv-uhd-4k-65-dolby-vision",
-    specs: ["65 polegadas", "Dolby Vision", "Game Mode", "4K UHD"],
-  },
-  {
-    id: "6",
-    name: "Smart TV 43 Britânia Roku TV LED Dolby Audio",
-    brand: "Britânia",
-    image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=800",
-    slug: "smart-tv-43-britania-roku-tv-dolby-audio",
-    specs: ["43 polegadas", "Roku TV", "Dolby Audio", "Full HD"],
-  },
-];
+// Get first 6 products for featured section
+const featuredProducts = productsData.slice(0, 6).map((product) => ({
+  id: product.id,
+  name: product.name,
+  brand: product.brand,
+  image: product.image,
+  slug: product.slug,
+  specs: product.specs_list,
+}));
 
 const Index = () => {
   return (

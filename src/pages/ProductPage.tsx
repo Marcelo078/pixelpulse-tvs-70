@@ -1,87 +1,19 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, Navigate } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ExternalLink, CheckCircle, TrendingUp, Award, Shield } from "lucide-react";
+import { getProductBySlug } from "@/data/products";
 
 const ProductPage = () => {
   const { slug } = useParams();
+  const productData = slug ? getProductBySlug(slug) : undefined;
 
-  // This would normally come from a database or API
-  const productData = {
-    name: "Smart TV 60 Philco P60CGA LED Google TV Dolby Atmos",
-    brand: "Philco",
-    image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=1200",
-    specs: {
-      size: "60 polegadas",
-      resolution: "4K UHD (3840 x 2160)",
-      system: "Google TV",
-      audio: "Dolby Atmos",
-      hdmi: "3 portas HDMI",
-      usb: "2 portas USB",
-      connectivity: "Wi-Fi, Bluetooth",
-    },
-    longDescription: `
-      A **Smart TV 60 Philco P60CGA** é uma excelente escolha para quem busca uma **TV 4K com Google TV** e tecnologia **Dolby Atmos**. 
-      
-      Com **60 polegadas** de tela LED, esta Smart TV oferece uma experiência de visualização imersiva com qualidade de imagem excepcional em **resolução 4K Ultra HD**.
-
-      ## Principais Características
-
-      ### Google TV Integrada
-      
-      A **Google TV** oferece uma interface intuitiva e acesso a milhares de aplicativos, incluindo Netflix, YouTube, Disney+, Amazon Prime Video e muito mais. Com o **assistente do Google** integrado, você pode controlar sua TV por voz.
-
-      ### Dolby Atmos - Audio Imersivo
-      
-      A tecnologia **Dolby Atmos** proporciona um som tridimensional envolvente, criando uma experiência de áudio cinematográfica em sua sala. Sons se movem ao seu redor em um espaço tridimensional, proporcionando maior imersão em filmes, séries e jogos.
-
-      ### Resolução 4K UHD
-      
-      Com **resolução 4K Ultra HD (3840 x 2160 pixels)**, você desfruta de imagens nítidas e detalhadas com cores vibrantes e realistas. A tecnologia HDR melhora ainda mais a qualidade da imagem com maior contraste e gama de cores.
-
-      ## Conectividade Completa
-      
-      - **3 portas HDMI**: Conecte consoles, soundbars e outros dispositivos
-      - **2 portas USB**: Para reprodução de mídia e gravação
-      - **Wi-Fi integrado**: Acesso à internet sem fios
-      - **Bluetooth**: Conecte fones de ouvido e caixas de som sem fio
-
-      ## Design Elegante
-      
-      O design moderno e minimalista com bordas finas se integra perfeitamente a qualquer ambiente. A base robusta garante estabilidade e a TV também é compatível com suporte de parede.
-
-      ## Para Quem é Indicada?
-      
-      Esta **Smart TV Philco 60 polegadas** é ideal para:
-      
-      - Famílias que buscam uma tela grande com qualidade 4K
-      - Entusiastas de streaming que querem acesso fácil a apps
-      - Gamers casuais que valorizam boa qualidade de imagem
-      - Quem procura **custo-benefício** em TVs de 60 polegadas
-
-      ## Melhores Preços e Ofertas
-      
-      Atualmente, você pode encontrar as **melhores ofertas da Smart TV Philco P60CGA** no Mercado Livre, com condições especiais de pagamento e frete grátis para diversas regiões.
-
-      ## Comparação com Outros Modelos
-      
-      Comparada com outras **TVs 4K de 60 polegadas**, a Philco P60CGA se destaca pelo excelente custo-benefício, especialmente considerando os recursos de **Google TV** e **Dolby Atmos** que normalmente são encontrados em modelos mais caros.
-
-      ## Avaliações de Usuários
-      
-      Com base em avaliações reais de compradores:
-      
-      - ⭐⭐⭐⭐⭐ "Qualidade de imagem excelente, som muito bom"
-      - ⭐⭐⭐⭐⭐ "Google TV funciona perfeitamente, muito fácil de usar"
-      - ⭐⭐⭐⭐ "Ótimo custo-benefício para uma TV de 60 polegadas"
-
-      ## Conclusão - Vale a Pena?
-      
-      A **Smart TV 60 Philco P60CGA** é uma excelente escolha para quem busca uma TV grande com tecnologias modernas a um preço acessível. O conjunto de **Google TV + Dolby Atmos + 4K** oferece uma experiência premium sem comprometer o orçamento.
-    `,
-  };
+  // Redirect to 404 if product not found
+  if (!productData) {
+    return <Navigate to="/404" replace />;
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -93,7 +25,7 @@ const ProductPage = () => {
           <nav className="text-sm text-muted-foreground mb-6">
             <Link to="/" className="hover:text-primary">Início</Link>
             <span className="mx-2">/</span>
-            <Link to={`/marca/${productData.brand.toLowerCase()}`} className="hover:text-primary">{productData.brand}</Link>
+            <span className="text-foreground">{productData.brand}</span>
             <span className="mx-2">/</span>
             <span className="text-foreground">{productData.name}</span>
           </nav>
@@ -128,13 +60,13 @@ const ProductPage = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <Button asChild size="lg" className="flex-1 bg-accent hover:bg-accent/90 font-bold">
-              <a href="https://mercadolivre.com/sec/2DLVWrw" target="_blank" rel="noopener noreferrer">
+              <a href={productData.affiliateLink} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="mr-2 h-5 w-5" />
                 Comprar no Mercado Livre
               </a>
             </Button>
             <Button asChild size="lg" variant="outline" className="flex-1">
-              <a href="https://mercadolivre.com/sec/2DLVWrw" target="_blank" rel="noopener noreferrer">
+              <a href={productData.affiliateLink} target="_blank" rel="noopener noreferrer">
                 Ver Mais Ofertas
               </a>
             </Button>
@@ -205,7 +137,7 @@ const ProductPage = () => {
               Aproveite condições especiais e frete grátis
             </p>
             <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold">
-              <a href="https://mercadolivre.com/sec/2DLVWrw" target="_blank" rel="noopener noreferrer">
+              <a href={productData.affiliateLink} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="mr-2 h-5 w-5" />
                 Ver Ofertas no Mercado Livre
               </a>
