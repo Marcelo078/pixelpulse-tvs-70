@@ -1,9 +1,15 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Seo } from "@/components/Seo";
 
 const Privacidade = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <Seo
+        title="Política de Privacidade — Melhores TVs"
+        description="Saiba como o Melhores TVs coleta, usa e protege os dados de navegação dos visitantes, além do uso de cookies e links de afiliado."
+        path="/privacidade"
+      />
       <Header />
       
       <main className="flex-1 py-12">
