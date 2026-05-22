@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink, TrendingUp, Shield, Award } from "lucide-react";
 import { Link } from "react-router-dom";
 import { productsData } from "@/data/products";
+import { Seo } from "@/components/Seo";
 
 // Get first 6 products for featured section
 const featuredProducts = productsData.slice(0, 6).map((product) => ({
@@ -20,6 +21,12 @@ const featuredProducts = productsData.slice(0, 6).map((product) => ({
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <Seo
+        title="Melhores TVs — Análises e Ofertas de Smart TVs 4K"
+        description="Análises detalhadas, comparações imparciais e melhores ofertas em Smart TVs 4K das marcas Philco, Aiwa, AOC, Hisense e mais."
+        path="/"
+        type="website"
+      />
       <Header />
       
       <main className="flex-1">

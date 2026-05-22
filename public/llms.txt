@@ -1,0 +1,15 @@
+# Melhores TVs
+
+> Portal brasileiro de análises imparciais, comparativos e ofertas das melhores Smart TVs 4K do mercado, com links de afiliado para o Mercado Livre.
+
+## Pages
+
+- [Início](/): Vitrine com TVs em destaque e melhores ofertas.
+- [Sobre Nós](/sobre): Quem somos e como produzimos as análises.
+- [Política de Privacidade](/privacidade): Como tratamos dados de visitantes.
+- [Termos de Uso](/termos): Termos e condições de uso do site.
+- [Disclaimer](/disclaimer): Aviso sobre links de afiliado.
+
+## Optional
+
+- [Produtos](/produto/smart-tv-60-philco-p60cga-google-tv-dolby-atmos-melhores-precos): Exemplo de análise individual de Smart TV.

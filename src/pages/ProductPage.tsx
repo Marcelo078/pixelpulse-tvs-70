@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ExternalLink, CheckCircle, TrendingUp, Award, Shield } from "lucide-react";
 import { getProductBySlug } from "@/data/products";
+import { Seo } from "@/components/Seo";
 
 const ProductPage = () => {
   const { slug } = useParams();
@@ -15,8 +16,44 @@ const ProductPage = () => {
     return <Navigate to="/404" replace />;
   }
 
+  const path = `/produto/${productData.slug}`;
+  const seoTitle = `${productData.name} — Análise e Ofertas`.slice(0, 60);
+  const seoDescription =
+    `Análise completa da ${productData.name}: especificações, preços e onde comprar com as melhores ofertas no Mercado Livre.`.slice(
+      0,
+      160,
+    );
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: productData.name,
+    image: productData.image,
+    description: seoDescription,
+    author: { "@type": "Organization", name: "Melhores TVs" },
+    publisher: {
+      "@type": "Organization",
+      name: "Melhores TVs",
+      url: "https://tvs.sarfpazari.com/",
+    },
+    mainEntityOfPage: `https://tvs.sarfpazari.com${path}`,
+    about: {
+      "@type": "Product",
+      name: productData.name,
+      brand: { "@type": "Brand", name: productData.brand },
+      image: productData.image,
+    },
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
+      <Seo
+        title={seoTitle}
+        description={seoDescription}
+        path={path}
+        type="article"
+        image={productData.image}
+        jsonLd={jsonLd}
+      />
       <Header />
       
       <main className="flex-1 py-8">
