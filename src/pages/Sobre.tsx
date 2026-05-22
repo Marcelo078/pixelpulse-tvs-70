@@ -2,10 +2,16 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { TrendingUp, Shield, Award, Users } from "lucide-react";
+import { Seo } from "@/components/Seo";
 
 const Sobre = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <Seo
+        title="Sobre Nós — Melhores TVs"
+        description="Conheça o Melhores TVs: nossa missão, valores e como produzimos análises imparciais das melhores Smart TVs 4K do Brasil."
+        path="/sobre"
+      />
       <Header />
       
       <main className="flex-1">
