@@ -52,7 +52,12 @@ export const ProductCarousel = ({ products, title }: ProductCarouselProps) => {
                     </Link>
                   </Button>
                   <Button asChild variant="default" className="bg-accent hover:bg-accent/90">
-                    <a href="https://mercadolivre.com/sec/2DLVWrw" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://mercadolivre.com/sec/2DLVWrw"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Ver oferta no Mercado Livre"
+                    >
                       <ExternalLink className="h-4 w-4" />
                     </a>
                   </Button>
